@@ -7,9 +7,14 @@ public class GenerateLights : MonoBehaviour
     List<GameObject> tLights;
     int amtLights = 10;
     public float radius = 10;
+    Color[] colors = new Color[3];
     // Start is called before the first frame update
     void Start()
     {
+        colors[0] = Color.green;
+        colors[1] = new Color(255,255,0);
+        colors[2] = Color.red;
+
         CreateCircleOfLights();
     }
 
@@ -31,6 +36,7 @@ public class GenerateLights : MonoBehaviour
             GameObject tl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             tl.transform.SetPositionAndRotation(pos, quater);
             tl.transform.parent = this.transform;
+            tl.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
             tLights.Add(tl);
         }
     }
