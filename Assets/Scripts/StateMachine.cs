@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public abstract class State 
+public abstract class State 
 {
     public StateMachine sm;
-    public State Enter() {}
-    public State Exit() {}
-    public State Think() {}
+    public virtual State Enter() {}
+    public virtual State Exit() {}
+    public virtual State Think() {}
 }
 
 public class StateMachine : MonoBehaviour
@@ -84,5 +84,5 @@ public class StateMachine : MonoBehaviour
         ChangeState(previousState);
     }
     
-}*/
-
+}
+*/

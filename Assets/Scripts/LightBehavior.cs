@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightBehavior : MonoBehaviour
 {
+    //tWEAK TO ALTER TAGS OF LIGHTS AS THEY CHANGE
     GameObject curLight;
     //public GameObject center;
     bool isG = false;
@@ -18,19 +19,22 @@ public class LightBehavior : MonoBehaviour
         colors[0] = Color.green;
         colors[1] = new Color(255, 255, 0);
         colors[2] = Color.red;
-        //curLight = this.gameObject;
+        curLight = this.gameObject;
         curColor = this.gameObject.GetComponent<Renderer>().material.color;
         if (curColor == colors[0])
         {
             isG = true;
+            this.gameObject.tag = "GreenLight";
         }
         else if (curColor == colors[1])
         {
             isY = true;
+            this.gameObject.tag = "OtherLight";
         }
         else if (curColor == colors[2])
         {
             isR = true;
+            this.gameObject.tag = "OtherLight";
         }
     }
     public void OnEnable() 
@@ -78,6 +82,7 @@ public class LightBehavior : MonoBehaviour
         curColor = c;
         var tlRend = this.gameObject.GetComponent<Renderer>();
         tlRend.material.SetColor("_Color", curColor);
+        this.gameObject.tag = "GreenLight";
         yield return new WaitForSeconds(t);
         isG = true;
         isR = false;
@@ -91,6 +96,7 @@ public class LightBehavior : MonoBehaviour
         curColor = c;
         var tlRend = this.gameObject.GetComponent<Renderer>();
         tlRend.material.SetColor("_Color", curColor);
+        this.gameObject.tag = "OtherLight";
         yield return new WaitForSeconds(t);
         isY = true;
         isG = false;
@@ -103,6 +109,7 @@ public class LightBehavior : MonoBehaviour
         curColor = c;
         var tlRend = this.gameObject.GetComponent<Renderer>();
         tlRend.material.SetColor("_Color", curColor);
+        this.gameObject.tag = "OtherLight";
         yield return new WaitForSeconds(t);
         isR = true;
         isY = false;
