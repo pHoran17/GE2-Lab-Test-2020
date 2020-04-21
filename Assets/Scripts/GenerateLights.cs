@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GenerateLights : MonoBehaviour
 {
-    List<GameObject> tLights;
+    public List<GameObject> tLights;
+    public GameObject trafLight;
     int amtLights = 10;
     public float radius = 10;
-    Color[] colors = new Color[3];
+    public Color[] colors = new Color[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +34,13 @@ public class GenerateLights : MonoBehaviour
             pos = transform.TransformPoint(pos);
             Quaternion quater = Quaternion.AngleAxis(theta * i * Mathf.Rad2Deg, Vector3.up);
             quater = transform.rotation * quater;
-            GameObject tl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            tl.transform.SetPositionAndRotation(pos, quater);
+            //GameObject tl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            GameObject tl = GameObject.Instantiate<GameObject>(trafLight, pos, quater);
+            //tl.transform.SetPositionAndRotation(pos, quater);
             tl.transform.parent = this.transform;
             tl.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
             tLights.Add(tl);
         }
     }
+
 }
